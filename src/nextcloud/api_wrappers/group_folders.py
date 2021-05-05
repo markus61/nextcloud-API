@@ -121,3 +121,85 @@ class GroupFolders(WithRequester):
         """
         url = "/".join([str(fid), "mountpoint"])
         return self.requester.post(url=url, data={"mountpoint": mountpoint})
+
+    def enable_group_folder_advanced_permissions(self, fid):
+        """
+        Enable advanced permissions for group folder
+
+        Args:
+            fid (int/str): group folder id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "1"])
+        return self.requester.post(url)
+
+    def disable_group_folder_advanced_permissions(self, fid):
+        """
+        Disable advanced permissions for group folder
+
+        Args:
+            fid (int/str): group folder id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "0"])
+        return self.requester.post(url)
+
+    def add_group_folder_manage_group(self, fid, gid):
+        """
+        Add group to group folder manangers
+
+        Args:
+            fid (int/str): group folder id
+            gid (str): group id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "manageACL"])
+        return self.requester.post(url=url, data={'manageACL': 1, 'mappingId': gid, 'mappingType': 'group'})
+
+    def remove_group_folder_manage_group(self, fid, gid):
+        """
+        Remove group from group folder manangers
+
+        Args:
+            fid (int/str): group folder id
+            gid (str): group id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "manageACL"])
+        return self.requester.post(url=url, data={'manageACL': 0, 'mappingId': gid, 'mappingType': 'group'})
+        
+    def add_group_folder_manage_user(self, fid, uid):
+        """
+        Add user to group folder manangers
+
+        Args:
+            fid (int/str): group folder id
+            uid (str): group id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "manageACL"])
+        return self.requester.post(url=url, data={'manageACL': 1, 'mappingId': uid, 'mappingType': 'user'})
+
+    def remove_group_folder_manage_user(self, fid, uid):
+        """
+        Remove user from group folder manangers
+
+        Args:
+            fid (int/str): group folder id
+            uid (str): group id
+
+        Returns:
+
+        """
+        url = "/".join([str(fid), "manageACL"])
+        return self.requester.post(url=url, data={'manageACL': 0, 'mappingId': uid, 'mappingType': 'user'})

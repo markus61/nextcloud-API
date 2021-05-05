@@ -10,7 +10,7 @@ with open(os.path.join(SETUPDIR, 'README.md'), 'r') as f:
 
 setuptools.setup(
     name='nextcloud',
-    version='0.0.1',
+    version='0.0.2',
     author='EnterpriseyIntranet',
     description="Python wrapper for NextCloud api",
     long_description=long_description,
